@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>2022년 중등부 15번</title>
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <p>현재까지 사용한 연산 횟수: <span id="counts">0</span>회</p>
+        <table class="table">
+            <tr>
+                <th></th>
+                <th>1</th>
+                <th>2</th>
+                <th>3</th>
+                <th>4</th>
+                <th>5</th>
+                <th>6</th>
+                <th>7</th>
+                <th>8</th>
+                <th>9</th>
+                <th>10</th>
+                <th>11</th>
+                <th>12</th>
+            </tr>
+            <tr>
+                <th>A</th>
+                <td id="a1">5</td>
+                <td id="a2">3</td>
+                <td id="a3">6</td>
+                <td id="a4">1</td>
+                <td id="a5">3</td>
+                <td id="a6">6</td>
+                <td id="a7">1</td>
+                <td id="a8">15</td>
+                <td id="a9">8</td>
+                <td id="a10">10</td>
+                <td id="a11">12</td>
+                <td id="a12">10</td>
+            </tr>
+            <tr>
+                <th>B</th>
+                <td id="b1">0</td>
+                <td id="b2">0</td>
+                <td id="b3">0</td>
+                <td id="b4">0</td>
+                <td id="b5">0</td>
+                <td id="b6">0</td>
+                <td id="b7">0</td>
+                <td id="b8">0</td>
+                <td id="b9">0</td>
+                <td id="b10">0</td>
+                <td id="b11">0</td>
+                <td id="b12">0</td>
+            </tr>
+        </table>
+        <div class="row">
+            <div class="col-5">
+                연산의 구간과 더할 값을 입력하세요
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2">
+                <input type="number" id="start" class="form-control" placeholder="시작">
+            </div>
+            <div class="col-2">
+                <input type="number" id="end" class="form-control" placeholder="끝">
+            </div>
+            <div class="col-2">
+                <input type="number" id="value" class="form-control" placeholder="값">
+            </div>
+            <div class="col-2">
+                <button class="btn btn-primary" id="btn">연산</button>
+            </div>
+            <div class="col-4">
+                <button class="btn btn-danger" id="reset">초기화</button>
+            </div>
+        </div>
+        <p id="history"></p>
+    </div>
+    <script>
+        $(function() {
+            $('#btn').click(function() {
+                var start = parseInt($('#start').val());
+                var end = parseInt($('#end').val());
+                var value = parseInt($('#value').val());
+                var counts = $('#counts').text();
+                if(start > end) {
+                    alert('시작값이 끝값보다 큽니다.');
+                    return;
+                }
+                if(value <= 0) {
+                    alert('더할 값이 0보다 작거나 같습니다.');
+                    return;
+                }
+                counts = parseInt(counts);
+                for (var i = start; i <= end; i++) {
+                    var id = '#b' + i;
+                    var b = parseInt($(id).text());
+                    $(id).text(b+value);
+                }
+                $("#history").append(start + "부터 " + end + "까지 " + value + "를 더함<br>");
+                counts++;
+                $('#start').val('');
+                $('#end').val('');
+                $('#value').val('');
+                $('#counts').text(counts);
+                for(var i=1 ; i<=12 ; i++) {
+                    var aid = '#a' + i;
+                    var bid = '#b' + i;
+                    var a = parseInt($(aid).text());
+                    var b = parseInt($(bid).text());
+                    if(a == b) {
+                        $(bid).css('background-color', 'lightblue');
+                    }
+                    else if(a < b) {
+                        $(bid).css('background-color', 'red');
+                        $(bid).css('color', 'white');
+                    }
+                    else {
+                        $(bid).css('background-color', 'white');
+                    }
+                }
+                var fcnt = 0;
+                for(var i=1 ; i<=12 ; i++) {
+                    var aid = '#a' + i;
+                    var bid = '#b' + i;
+                    var a = parseInt($(aid).text());
+                    var b = parseInt($(bid).text());
+                    if(a == b) {
+                        fcnt++;
+                    }
+                }
+                if(fcnt == 12) {
+                    alert('모든 값이 같아졌습니다.');
+                }
+            });
+            $('#reset').click(function() {
+                for (var i = 1; i <= 12; i++) {
+                    var id = '#b' + i;
+                    $(id).text(0);
+                }
+                $('#counts').text(0);
+                $('#start').val('');
+                $('#end').val('');
+                $('#value').val('');
+                $('#history').text('');
+                for(var i=1 ; i<=12 ; i++) {
+                    var bid = '#b' + i;
+                    $(bid).css('background-color', 'white');
+                    $(bid).css('color', 'black');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
