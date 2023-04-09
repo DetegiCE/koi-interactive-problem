@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>2022년 중등부 14번</title>
+    <style>
+        #canvasm14 {
+            border: 1px solid black;
+        }
+        .container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="canvasm14" width="400" height="300"></canvas>
+        <p>
+            <div class="row">
+                <div class="col-2" style="color: purple;">
+                    1번째 선 긋기
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input1">
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input2">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2" style="color: orangered;">
+                    2번째 선 긋기
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input3">
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input4">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2" style="color: green;">
+                    3번째 선 긋기
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input5">
+                </div>
+                <div class="col-1">
+                    <input type="text" class="form-control" id="m14input6">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-2">
+                    <button class="btn btn-primary" onclick="btnDraw()">그리기</button>
+                </div>
+            </div>
+            <div id="hb" style="display: none;">
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn btn-danger" onclick="hbReset()">한붓그리기 초기화</button>
+                    </div>
+                    <div style="display: none;" id="hbpos">-1</div>
+                    <div id="path"></div>
+                </div>
+                <div>
+                    <button class="btn btn-secondary" onclick="hbDraw(0)">A</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(1)">B</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(2)">C</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(3)">D</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(4)">E</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(5)">F</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(6)">G</button>
+                    <button class="btn btn-secondary" onclick="hbDraw(7)">H</button>
+                </div>
+            </div>
+        </p>
+    </div>
+    <script>
+        function drawNode(ctx, x, y, r, color) {
+            ctx.beginPath();
+            ctx.arc(x, y, r, 0, 2 * Math.PI);
+            ctx.fillStyle = color;
+            ctx.fill();
+        }
+        function drawEdge(ctx, x1, y1, x2, y2, color) {
+            ctx.beginPath();
+            ctx.moveTo(x1, y1);
+            ctx.lineTo(x2, y2);
+            ctx.strokeStyle = color;
+            ctx.stroke();
+        }
+        function drawText(ctx, x, y, text, color) {
+            ctx.beginPath();
+            ctx.font = "20px Arial";
+            ctx.fillStyle = color;
+            ctx.fillText(text, x-5, y+5);
+        }
+        
+        const canvas = document.getElementById("canvasm14");
+        const ctx = canvas.getContext("2d");
+        var cx = [150, 270, 380, 60, 90, 180, 290, 350];
+        var cy = [70, 100, 50, 170, 230, 190, 170, 260];
+        var links = [[0, 1], [0, 3], [0, 5], [1, 2], [1, 6], [3, 4], [3, 5], [4, 5], [5, 6], [6, 7]];
+        var clinks = [[0, 1], [0, 3], [0, 5], [1, 2], [1, 6], [3, 4], [3, 5], [4, 5], [5, 6], [6, 7]];
+        creset();
+
+        function creset() {
+
+            for (var i = 0; i < links.length; i++) {
+                drawEdge(ctx, cx[links[i][0]], cy[links[i][0]], cx[links[i][1]], cy[links[i][1]], "black");
+            }
+            for (var i = 0; i < 8; i++) {
+                drawNode(ctx, cx[i], cy[i], 10, "lightgray");
+                drawText(ctx, cx[i], cy[i], String.fromCharCode(65+i), "black");
+            }
+
+            clinks = [[0, 1], [0, 3], [0, 5], [1, 2], [1, 6], [3, 4], [3, 5], [4, 5], [5, 6], [6, 7]];
+
+        }
+
+        function hbDraw(pos) {
+            var hbpos = $("#hbpos").text();
+            if(hbpos == -1) {
+                drawNode(ctx, cx[pos], cy[pos], 10, "red");
+                drawText(ctx, cx[pos], cy[pos], String.fromCharCode(65+pos), "black");
+                $("#hbpos").text(pos);
+                $("#path").text(String.fromCharCode(65+pos));
+            }
+            else {
+                var flg = 0;
+                var minpos = min(hbpos, pos);
+                var maxpos = max(hbpos, pos);
+                for (var i = 0; i < clinks.length; i++) {
+                    if(clinks[i][0] == minpos && clinks[i][1] == maxpos) {
+                        clinks.splice(i, 1);
+                        flg = 1;
+                        break;
+                    }
+                }
+                if(flg == 0) {
+                    alert("연결되지 않은 노드입니다.");
+                    return;
+                }
+                
+                drawNode(ctx, cx[pos], cy[pos], 10, "red");
+                drawEdge(ctx, cx[hbpos], cy[hbpos], cx[pos], cy[pos], "red");
+                drawText(ctx, cx[pos], cy[pos], String.fromCharCode(65+pos), "black");
+                $("#hbpos").text(pos);
+                $("#path").text($("#path").text() + " -> " + String.fromCharCode(65+pos));
+            }
+
+            if(clinks.length == 0) {
+                alert("축하합니다! 모든 노드를 연결하였습니다.");
+            }
+        }
+
+        function hbReset() {
+            ctx.reset();
+            creset();
+            $("#hbpos").text(-1);
+        }
+
+        function min(a, b) {
+            if(a > b) return b;
+            else return a;
+        }
+
+        function max(a, b) {
+            if(a > b) return a;
+            else return b;
+        }
+
+        function btnDraw() {
+            ctx.reset();
+            creset();
+            for(var n=1; n<=3; n++) {
+                var fr = $("#m14input"+(n*2-1)).val();
+                var to = $("#m14input"+(n*2)).val();
+                var x1 = 0, x2 = 0, y1 = 0, y2 = 0;
+                if('A' <= fr && fr <= 'H') {
+                    x1 = cx[fr.charCodeAt(0)-65];
+                    y1 = cy[fr.charCodeAt(0)-65];
+                }
+                else {
+                    alert("A~H 사이의 문자를 입력해주세요.");
+                    return;
+                }
+                if('A' <= to && to <= 'H') {
+                    x2 = cx[to.charCodeAt(0)-65];
+                    y2 = cy[to.charCodeAt(0)-65];
+                }
+                else {
+                    alert("A~H 사이의 문자를 입력해주세요.");
+                    return;
+                }
+                if(fr == to) {
+                    alert("같은 노드를 입력하셨습니다.");
+                    return;
+                }
+                
+                var mnnod = min($("#m14input"+(n*2-1)).val().charCodeAt(0)-65, $("#m14input"+(n*2)).val().charCodeAt(0)-65);
+                var mxnod = max($("#m14input"+(n*2-1)).val().charCodeAt(0)-65, $("#m14input"+(n*2)).val().charCodeAt(0)-65);
+                clinks.push([mnnod, mxnod]);
+
+                drawEdge(ctx, x1, y1, x2, y2, ["purple", "orangered", "green"][n-1]);
+            }
+            $("#hb").css("display", "block");
+        }
+
+    </script>
+</body>
+</html>
