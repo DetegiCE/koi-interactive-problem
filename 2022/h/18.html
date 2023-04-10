@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>2022년 고등부 18번</title>
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <colgroup>
+            <col span="10" style="width: 10%;">
+        </colgroup>
+        <table class="table">
+            <tr>
+                <th>번호</th>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+            <tr>
+                <th>질의</th>
+                <td>
+                    <input type="number" id="q1a" class="form-control">
+                    <input type="number" id="q1b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q2a" class="form-control">
+                    <input type="number" id="q2b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q3a" class="form-control">
+                    <input type="number" id="q3b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q4a" class="form-control">
+                    <input type="number" id="q4b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q5a" class="form-control">
+                    <input type="number" id="q5b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q6a" class="form-control">
+                    <input type="number" id="q6b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q7a" class="form-control">
+                    <input type="number" id="q7b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q8a" class="form-control">
+                    <input type="number" id="q8b" class="form-control">
+                </td>
+                <td>
+                    <input type="number" id="q9a" class="form-control">
+                    <input type="number" id="q9b" class="form-control">
+                </td>
+            </tr>
+            <tr>
+                <th>대답</td>
+                <td id="ans1"></td>
+                <td id="ans2"></td>
+                <td id="ans3"></td>
+                <td id="ans4"></td>
+                <td id="ans5"></td>
+                <td id="ans6"></td>
+                <td id="ans7"></td>
+                <td id="ans8"></td>
+                <td id="ans9"></td>
+            </tr>
+            <tr>
+                <th>추론</th>
+                <td>
+                    <input type="radio" id="a1t" class="form-check-input" name="a1">
+                    <label for="a1t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a1f" class="form-check-input" name="a1">
+                    <label for="a1f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a2t" class="form-check-input" name="a2">
+                    <label for="a2t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a2f" class="form-check-input" name="a2">
+                    <label for="a2f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a3t" class="form-check-input" name="a3">
+                    <label for="a3t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a3f" class="form-check-input" name="a3">
+                    <label for="a3f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a4t" class="form-check-input" name="a4">
+                    <label for="a4t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a4f" class="form-check-input" name="a4">
+                    <label for="a4f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a5t" class="form-check-input" name="a5">
+                    <label for="a5t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a5f" class="form-check-input" name="a5">
+                    <label for="a5f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a6t" class="form-check-input" name="a6">
+                    <label for="a6t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a6f" class="form-check-input" name="a6">
+                    <label for="a6f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a7t" class="form-check-input" name="a7">
+                    <label for="a7t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a7f" class="form-check-input" name="a7">
+                    <label for="a7f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a8t" class="form-check-input" name="a8">
+                    <label for="a8t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a8f" class="form-check-input" name="a8">
+                    <label for="a8f" class="form-check-label">거짓</label>
+                </td>
+                <td>
+                    <input type="radio" id="a9t" class="form-check-input" name="a9">
+                    <label for="a9t" class="form-check-label">참</label>
+                    <br>
+                    <input type="radio" id="a9f" class="form-check-input" name="a9">
+                    <label for="a9f" class="form-check-label">거짓</label>
+                </td>
+            </tr>
+        </table>
+        <button type="button" class="btn btn-primary" id="check">확인</button>
+    </div>
+    <script>
+        $(function() {
+            $("#check").click(function() {
+                var ans = [0, 0, 1, 1, 0, 1, 0, 1, 0, 0];
+                var q1a = $("#q1a").val();
+                var q1b = $("#q1b").val();
+                var q2a = $("#q2a").val();
+                var q2b = $("#q2b").val();
+                var q3a = $("#q3a").val();
+                var q3b = $("#q3b").val();
+                var q4a = $("#q4a").val();
+                var q4b = $("#q4b").val();
+                var q5a = $("#q5a").val();
+                var q5b = $("#q5b").val();
+                var q6a = $("#q6a").val();
+                var q6b = $("#q6b").val();
+                var q7a = $("#q7a").val();
+                var q7b = $("#q7b").val();
+                var q8a = $("#q8a").val();
+                var q8b = $("#q8b").val();
+                var q9a = $("#q9a").val();
+                var q9b = $("#q9b").val();
+                if(!(1 <= q1a && q1a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q1b && q1b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q2a && q2a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q2b && q2b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q3a && q3a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q3b && q3b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q4a && q4a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q4b && q4b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q5a && q5a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q5b && q5b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q6a && q6a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q6b && q6b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q7a && q7a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q7b && q7b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q8a && q8a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q8b && q8b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q9a && q9a <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(!(1 <= q9b && q9b <= 9)) {
+                    alert("1~9 사이의 숫자를 입력해주세요.");
+                    return;
+                }
+                if(ans[q1a] == ans[q1b]) {
+                    $("#ans1").text(q1a + "≠" + q1b);
+                } else {
+                    $("#ans1").text(q1a + "=" + q1b);
+                }
+                if(ans[q2a] == ans[q2b]) {
+                    $("#ans2").text(q2a + "=" + q2b);
+                } else {
+                    $("#ans2").text(q2a + "≠" + q2b);
+                }
+                if(ans[q3a] == ans[q3b]) {
+                    $("#ans3").text(q3a + "=" + q3b);
+                } else {
+                    $("#ans3").text(q3a + "≠" + q3b);
+                }
+                if(ans[q4a] == ans[q4b]) {
+                    $("#ans4").text(q4a + "≠" + q4b);
+                } else {
+                    $("#ans4").text(q4a + "=" + q4b);
+                }
+                if(ans[q5a] == ans[q5b]) {
+                    $("#ans5").text(q5a + "=" + q5b);
+                } else {
+                    $("#ans5").text(q5a + "≠" + q5b);
+                }
+                if(ans[q6a] == ans[q6b]) {
+                    $("#ans6").text(q6a + "≠" + q6b);
+                } else {
+                    $("#ans6").text(q6a + "=" + q6b);
+                }
+                if(ans[q7a] == ans[q7b]) {
+                    $("#ans7").text(q7a + "=" + q7b);
+                } else {
+                    $("#ans7").text(q7a + "≠" + q7b);
+                }
+                if(ans[q8a] == ans[q8b]) {
+                    $("#ans8").text(q8a + "≠" + q8b);
+                } else {
+                    $("#ans8").text(q8a + "=" + q8b);
+                }
+                if(ans[q9a] == ans[q9b]) {
+                    $("#ans9").text(q9a + "≠" + q9b);
+                } else {
+                    $("#ans9").text(q9a + "=" + q9b);
+                }
+            }
+        )});
+    </script>
+</body>
+</html>
