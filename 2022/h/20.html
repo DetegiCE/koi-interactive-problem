@@ -320,11 +320,322 @@
             <p>총 교환 횟수: <span id="q3_count" style="font-size: 150%;">0</span>번</p>
             <button type="button" class="btn btn-danger" id="btn_q3" onclick="qreset(3)">문제 3 초기화</button>
         </div>
+        <hr>
+        <div id="prob4">
+            <h2>문제 4</h2>
+            <p>교환을 할 괄호를 선택하세요</p>
+            <div id="q4_sel" style="display: none;">0</div>
+            <table class="table">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn1"
+                            onclick="change(4, 1)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn2"
+                            onclick="change(4, 2)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn3"
+                            onclick="change(4, 3)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn4"
+                            onclick="change(4, 4)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn5"
+                            onclick="change(4, 5)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn6"
+                            onclick="change(4, 6)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn7"
+                            onclick="change(4, 7)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn8"
+                            onclick="change(4, 8)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn9"
+                            onclick="change(4, 9)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn10"
+                            onclick="change(4, 10)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn11"
+                            onclick="change(4, 11)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn12"
+                            onclick="change(4, 12)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn13"
+                            onclick="change(4, 13)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn14"
+                            onclick="change(4, 14)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn15"
+                            onclick="change(4, 15)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn16"
+                            onclick="change(4, 16)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn17"
+                            onclick="change(4, 17)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn18"
+                            onclick="change(4, 18)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn19"
+                            onclick="change(4, 19)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn20"
+                            onclick="change(4, 20)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn21"
+                            onclick="change(4, 21)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn22"
+                            onclick="change(4, 22)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn23"
+                            onclick="change(4, 23)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn24"
+                            onclick="change(4, 24)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn25"
+                            onclick="change(4, 25)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q4_btn26"
+                            onclick="change(4, 26)">(</button>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="26" style="background-color: #DDD"></td>
+                    <td id="check_q4a" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="background-color: #FFF"></td>
+                    <td colspan="12" style="background-color: #DDD"></td>
+                    <td colspan="13" style="background-color: #FFF"></td>
+                    <td id="check_q4b" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: #FFF"></td>
+                    <td colspan="6" style="background-color: #DDD"></td>
+                    <td colspan="16" style="background-color: #FFF"></td>
+                    <td id="check_q4c" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="11" style="background-color: #FFF"></td>
+                    <td colspan="14" style="background-color: #DDD"></td>
+                    <td colspan="1" style="background-color: #FFF"></td>
+                    <td id="check_q4d" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="14" style="background-color: #FFF"></td>
+                    <td colspan="6" style="background-color: #DDD"></td>
+                    <td colspan="6" style="background-color: #FFF"></td>
+                    <td id="check_q4e" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="18" style="background-color: #FFF"></td>
+                    <td colspan="6" style="background-color: #DDD"></td>
+                    <td colspan="2" style="background-color: #FFF"></td>
+                    <td id="check_q4f" style="color: red;">X</td>
+                </tr>
+            </table>
+            <p>총 교환 횟수: <span id="q4_count" style="font-size: 150%;">0</span>번</p>
+            <button type="button" class="btn btn-danger" id="btn_q4" onclick="qreset(4)">문제 4 초기화</button>
+        </div>
+        <hr>
+        <div id="prob5">
+            <h2>문제 5</h2>
+            <p>교환을 할 괄호를 선택하세요</p>
+            <div id="q5_sel" style="display: none;">0</div>
+            <table class="table">
+                <tr>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn1"
+                            onclick="change(5, 1)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn2"
+                            onclick="change(5, 2)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn3"
+                            onclick="change(5, 3)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn4"
+                            onclick="change(5, 4)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn5"
+                            onclick="change(5, 5)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn6"
+                            onclick="change(5, 6)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn7"
+                            onclick="change(5, 7)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn8"
+                            onclick="change(5, 8)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn9"
+                            onclick="change(5, 9)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn10"
+                            onclick="change(5, 10)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn11"
+                            onclick="change(5, 11)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn12"
+                            onclick="change(5, 12)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn13"
+                            onclick="change(5, 13)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn14"
+                            onclick="change(5, 14)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn15"
+                            onclick="change(5, 15)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn16"
+                            onclick="change(5, 16)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn17"
+                            onclick="change(5, 17)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn18"
+                            onclick="change(5, 18)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn19"
+                            onclick="change(5, 19)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn20"
+                            onclick="change(5, 20)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn21"
+                            onclick="change(5, 21)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn22"
+                            onclick="change(5, 22)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn23"
+                            onclick="change(5, 23)">)</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn24"
+                            onclick="change(5, 24)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn25"
+                            onclick="change(5, 25)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn26"
+                            onclick="change(5, 26)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn27"
+                            onclick="change(5, 27)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn28"
+                            onclick="change(5, 28)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn29"
+                            onclick="change(5, 29)">(</button>
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-lg btn-light" id="q5_btn30"
+                            onclick="change(5, 30)">)</button>
+                    </td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan="1" style="background-color: #FFF"></td>
+                    <td colspan="28" style="background-color: #DDD"></td>
+                    <td colspan="1" style="background-color: #FFF"></td>
+                    <td id="check_q5a" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="4" style="background-color: #FFF"></td>
+                    <td colspan="8" style="background-color: #DDD"></td>
+                    <td colspan="18" style="background-color: #FFF"></td>
+                    <td id="check_q5b" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="14" style="background-color: #FFF"></td>
+                    <td colspan="6" style="background-color: #DDD"></td>
+                    <td colspan="10" style="background-color: #FFF"></td>
+                    <td id="check_q5c" style="color: red;">X</td>
+                </tr>
+                <tr>
+                    <td colspan="22" style="background-color: #FFF"></td>
+                    <td colspan="6" style="background-color: #DDD"></td>
+                    <td colspan="2" style="background-color: #FFF"></td>
+                    <td id="check_q5d" style="color: red;">X</td>
+                </tr>
+            </table>
+            <p>총 교환 횟수: <span id="q5_count" style="font-size: 150%;">0</span>번</p>
+            <button type="button" class="btn btn-danger" id="btn_q5" onclick="qreset(5)">문제 5 초기화</button>
+        </div>
+        <hr>
         <script>
             function qreset(qnum) {
                 var origstr1 = " )()())(()((())";
                 var origstr2 = " ))))(())))(((()((()";
                 var origstr3 = " (()()()))()(())(";
+                var origstr4 = " )))))))))))))((((((((((((("
+                var origstr5 = " )()()))))())(()((()()))(((((()"
                 $("#q" + qnum + "_sel").text("0");
                 $("#q" + qnum + "_count").text("0");
                 if (qnum == 1) {
@@ -363,6 +674,36 @@
                     $("#check_q" + qnum + "d").css("color", "red");
                     $("#check_q" + qnum + "e").text("X");
                     $("#check_q" + qnum + "e").css("color", "red");
+                }
+                else if (qnum == 4) {
+                    for (var i = 1; i <= 26; i++) {
+                        $("#q" + qnum + "_btn" + i).text(origstr4[i]);
+                    }
+                    $("#check_q" + qnum + "a").text("X");
+                    $("#check_q" + qnum + "a").css("color", "red");
+                    $("#check_q" + qnum + "b").text("X");
+                    $("#check_q" + qnum + "b").css("color", "red");
+                    $("#check_q" + qnum + "c").text("X");
+                    $("#check_q" + qnum + "c").css("color", "red");
+                    $("#check_q" + qnum + "d").text("X");
+                    $("#check_q" + qnum + "d").css("color", "red");
+                    $("#check_q" + qnum + "e").text("X");
+                    $("#check_q" + qnum + "e").css("color", "red");
+                    $("#check_q" + qnum + "f").text("X");
+                    $("#check_q" + qnum + "f").css("color", "red");
+                }
+                else if (qnum == 5) {
+                    for (var i = 1; i <= 30; i++) {
+                        $("#q" + qnum + "_btn" + i).text(origstr5[i]);
+                    }
+                    $("#check_q" + qnum + "a").text("X");
+                    $("#check_q" + qnum + "a").css("color", "red");
+                    $("#check_q" + qnum + "b").text("X");
+                    $("#check_q" + qnum + "b").css("color", "red");
+                    $("#check_q" + qnum + "c").text("X");
+                    $("#check_q" + qnum + "c").css("color", "red");
+                    $("#check_q" + qnum + "d").text("X");
+                    $("#check_q" + qnum + "d").css("color", "red");
                 }
             }
             function checkVPSstr(str) {
@@ -436,6 +777,20 @@
                     checkVPS(3, 5, 8, 'c');
                     checkVPS(3, 13, 16, 'd');
                     checkVPS(3, 14, 15, 'e');
+                }
+                else if (qnum == 4) {
+                    checkVPS(4, 1, 26, 'a');
+                    checkVPS(4, 2, 13, 'b');
+                    checkVPS(4, 5, 10, 'c');
+                    checkVPS(4, 12, 25, 'd');
+                    checkVPS(4, 15, 20, 'e');
+                    checkVPS(4, 19, 24, 'f');
+                }
+                else if (qnum == 5) {
+                    checkVPS(5, 2, 29, 'a');
+                    checkVPS(5, 5, 12, 'b');
+                    checkVPS(5, 15, 20, 'c');
+                    checkVPS(5, 23, 28, 'd');
                 }
             }
         </script>
