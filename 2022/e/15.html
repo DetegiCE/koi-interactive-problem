@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>2022년 초등부 15번</title>
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>제거 또는 복구할 문자를 선택해주세요.</p>
+        <p>제거한 문자 수: <span id="count" style="font-size: 150%;">0</span></p>
+        <table>
+            <button id="b1" class="btn btn-sm btn-light" onclick="bclick(1)">A</button>
+            <button id="b2" class="btn btn-sm btn-light" onclick="bclick(2)">B</button>
+            <button id="b3" class="btn btn-sm btn-light" onclick="bclick(3)">B</button>
+            <button id="b4" class="btn btn-sm btn-light" onclick="bclick(4)">A</button>
+            <button id="b5" class="btn btn-sm btn-light" onclick="bclick(5)">B</button>
+            <button id="b6" class="btn btn-sm btn-light" onclick="bclick(6)">C</button>
+            <button id="b7" class="btn btn-sm btn-light" onclick="bclick(7)">A</button>
+            <button id="b8" class="btn btn-sm btn-light" onclick="bclick(8)">B</button>
+            <button id="b9" class="btn btn-sm btn-light" onclick="bclick(9)">C</button>
+            <button id="b10" class="btn btn-sm btn-light" onclick="bclick(10)">A</button>
+            <button id="b11" class="btn btn-sm btn-light" onclick="bclick(11)">A</button>
+            <button id="b12" class="btn btn-sm btn-light" onclick="bclick(12)">B</button>
+            <button id="b13" class="btn btn-sm btn-light" onclick="bclick(13)">A</button>
+            <button id="b14" class="btn btn-sm btn-light" onclick="bclick(14)">B</button>
+            <button id="b15" class="btn btn-sm btn-light" onclick="bclick(15)">A</button>
+            <button id="b16" class="btn btn-sm btn-light" onclick="bclick(16)">A</button>
+            <button id="b17" class="btn btn-sm btn-light" onclick="bclick(17)">B</button>
+            <button id="b18" class="btn btn-sm btn-light" onclick="bclick(18)">B</button>
+            <button id="b19" class="btn btn-sm btn-light" onclick="bclick(19)">C</button>
+            <button id="b20" class="btn btn-sm btn-light" onclick="bclick(20)">A</button>
+            <button id="b21" class="btn btn-sm btn-light" onclick="bclick(21)">C</button>
+            <button id="b22" class="btn btn-sm btn-light" onclick="bclick(22)">C</button>
+            <button id="b23" class="btn btn-sm btn-light" onclick="bclick(23)">C</button>
+            <button id="b24" class="btn btn-sm btn-light" onclick="bclick(24)">B</button>
+            <button id="b25" class="btn btn-sm btn-light" onclick="bclick(25)">C</button>
+        </table>
+        <p>
+            <button onclick="reset()" class="btn btn-danger">초기화</button>
+        </p>
+    </div>
+    <script>
+        function reset() {
+            for (var i = 1; i <= 25; i++) {
+                $("#b" + i).attr("disabled", false);
+                $("#b" + i).removeClass("btn-primary");
+                $("#b" + i).removeClass("btn-success");
+                $("#b" + i).removeClass("btn-warning");
+                $("#b" + i).addClass("btn-light");
+            }
+            $("#count").text(0);
+            checkren();
+        }
+        function bclick(num) {
+            if ($("#b" + num).attr("disabled")) {
+                $("#b" + num).attr("disabled", false);
+                $("#count").text(parseInt($("#count").text()) - 1);
+            } else {
+                $("#b" + num).attr("disabled", true);
+                $("#count").text(parseInt($("#count").text()) + 1);
+            }
+            checkren();
+        }
+        function checkren() {
+            var strc = ".";
+            for (var i = 1; i <= 25; i++) {
+                if ($("#b" + i).attr("disabled")) {
+                    strc += "X";
+                } else {
+                    strc += $("#b" + i).text();
+                }
+            }
+            var rec = 0;
+            var recc = ".";
+            for (var i = 1; i <= 25; i++) {
+                if (strc[i] == "X") {
+                    continue;
+                }
+                else if (strc[i] == recc) {
+                    for (var j = rec; j <= i; j++) {
+                        if (recc == 'A') {
+                            $("#b" + j).removeClass("btn-light");
+                            $("#b" + j).removeClass("btn-success");
+                            $("#b" + j).removeClass("btn-warning");
+                            $("#b" + j).addClass("btn-primary");
+                        }
+                        else if (recc == 'B') {
+                            $("#b" + j).removeClass("btn-light");
+                            $("#b" + j).removeClass("btn-primary");
+                            $("#b" + j).removeClass("btn-warning");
+                            $("#b" + j).addClass("btn-success");
+                        }
+                        else if (recc == 'C') {
+                            $("#b" + j).removeClass("btn-light");
+                            $("#b" + j).removeClass("btn-primary");
+                            $("#b" + j).removeClass("btn-success");
+                            $("#b" + j).addClass("btn-warning");
+                        }
+                    }
+                    rec = 0;
+                    recc = '.';
+                }
+                else {
+                    rec = i;
+                    recc = strc[i];
+                }
+            }
+        }
+        $(function () {
+            checkren();
+        });
+    </script>
+</body>
+
+</html>
