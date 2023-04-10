@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <title>2022년 초등부 14번</title>
+    <style>
+        .container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <p>현재까지 생산한 개수: <span id="count" style="font-size: 150%;">0</span>개</p>
+        <button class="btn btn-danger" id="reset" onclick="reset()">초기화</button>
+        <div style="display: none;" id="sel">0</div>
+        <table class="table">
+            <tr>
+                <td><button class="btn btn-light" id="1a1" onclick="prod(1, 1)">O</button></td>
+                <td><button class="btn btn-light" id="1a2" onclick="prod(1, 2)">O</button></td>
+                <td><button class="btn btn-light" id="1a3" onclick="prod(1, 3)">O</button></td>
+                <td><button class="btn btn-warning" id="1a4">X</button></td>
+                <td><button class="btn btn-light" id="1a5" onclick="prod(1, 5)">O</button></td>
+                <td><button class="btn btn-warning" id="1a6">X</button></td>
+                <td><button class="btn btn-light" id="1a7" onclick="prod(1, 7)">O</button></td>
+                <td><button class="btn btn-light" id="1a8" onclick="prod(1, 8)">O</button></td>
+                <td><button class="btn btn-warning" id="1a9">X</button></td>
+                <td><button class="btn btn-light" id="1a10" onclick="prod(1, 10)">O</button></td>
+                <td><button class="btn btn-light" id="1a11" onclick="prod(1, 11)">O</button></td>
+                <td><button class="btn btn-light" id="1a12" onclick="prod(1, 12)">O</button></td>
+                <td><button class="btn btn-light" id="1a13" onclick="prod(1, 13)">O</button></td>
+            </tr>
+            <tr>
+                <td><button class="btn btn-light" id="2a1" onclick="prod(2, 1)">O</button></td>
+                <td><button class="btn btn-warning" id="2a2">X</button></td>
+                <td><button class="btn btn-warning" id="2a3">X</button></td>
+                <td><button class="btn btn-light" id="2a4" onclick="prod(2, 4)">O</button></td>
+                <td><button class="btn btn-light" id="2a5" onclick="prod(2, 5)">O</button></td>
+                <td><button class="btn btn-warning" id="2a6">X</button></td>
+                <td><button class="btn btn-warning" id="2a7">X</button></td>
+                <td><button class="btn btn-light" id="2a8" onclick="prod(2, 8)">O</button></td>
+                <td><button class="btn btn-light" id="2a9" onclick="prod(2, 9)">O</button></td>
+                <td><button class="btn btn-warning" id="2a10">X</button></td>
+                <td><button class="btn btn-light" id="2a11" onclick="prod(2, 11)">O</button></td>
+                <td><button class="btn btn-warning" id="2a12">X</button></td>
+                <td><button class="btn btn-light" id="2a13" onclick="prod(2, 13)">O</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function reset() {
+            $("#count").text(0);
+            $("#sel").text(0);
+            for (var i = 1; i <= 2; i++) {
+                for (var j = 1; j <= 13; j++) {
+                    var text = $("#" + i + "a" + j).text();
+                    if (text != 'X') {
+                        $("#" + i + "a" + j).text("O");
+                        $("#" + i + "a" + j).removeClass("btn-dark");
+                        $("#" + i + "a" + j).removeClass("btn-info");
+                        $("#" + i + "a" + j).addClass("btn-light");
+                        $("#" + i + "a" + j).attr("disabled", false);
+                    }
+                }
+            }
+        }
+        function prod(r, c) {
+            var sel = $("#sel").text();
+            var count = parseInt($("#count").text());
+            if (sel == 0) {
+                $("#sel").text(r + "," + c);
+                $("#" + r + "a" + c).removeClass("btn-light");
+                $("#" + r + "a" + c).addClass("btn-dark");
+            }
+            else {
+                var selr = sel.split(",")[0];
+                var selc = sel.split(",")[1];
+                if (selr == r && selc == c) {
+                    $("#sel").text(0);
+                    $("#" + r + "a" + c).removeClass("btn-dark");
+                    $("#" + r + "a" + c).addClass("btn-light");
+                }
+                else {
+                    if (selr == r) {
+                        if (selc == c + 1 || selc == c - 1) {
+                            $("#" + r + "a" + c).text(count + 1);
+                            $("#" + selr + "a" + selc).text(count + 1);
+                            $("#sel").text(0);
+                            $("#" + r + "a" + c).attr("disabled", true);
+                            $("#" + r + "a" + c).removeClass("btn-light");
+                            $("#" + r + "a" + c).removeClass("btn-dark");
+                            $("#" + r + "a" + c).addClass("btn-info");
+                            $("#" + selr + "a" + selc).attr("disabled", true);
+                            $("#" + selr + "a" + selc).removeClass("btn-light");
+                            $("#" + selr + "a" + selc).removeClass("btn-dark");
+                            $("#" + selr + "a" + selc).addClass("btn-info");
+                            count++;
+                            $("#count").text(count);
+                        }
+                        else {
+                            alert("다른 버튼을 선택해주세요.");
+                        }
+                    }
+                    else if (selc == c) {
+                        if (selr == r + 1 || selr == r - 1) {
+                            $("#" + r + "a" + c).text(count + 1);
+                            $("#" + selr + "a" + selc).text(count + 1);
+                            $("#sel").text(0);
+                            $("#" + r + "a" + c).attr("disabled", true);
+                            $("#" + r + "a" + c).removeClass("btn-light");
+                            $("#" + r + "a" + c).removeClass("btn-dark");
+                            $("#" + r + "a" + c).addClass("btn-info");
+                            $("#" + selr + "a" + selc).attr("disabled", true);
+                            $("#" + selr + "a" + selc).removeClass("btn-light");
+                            $("#" + selr + "a" + selc).removeClass("btn-dark");
+                            $("#" + selr + "a" + selc).addClass("btn-info");
+                            count++;
+                            $("#count").text(count);
+                        }
+                        else {
+                            alert("다른 버튼을 선택해주세요.");
+                        }
+                    }
+                    else {
+                        alert("다른 버튼을 선택해주세요.");
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
