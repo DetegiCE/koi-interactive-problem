@@ -3,4 +3,4 @@
 
 내 수업 때 내가 필요해서 만듬
 
-![미리보기](https://koi.sui.kr/)
+[사이트 바로가기](https://koi.sui.kr/)
